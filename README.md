@@ -1,114 +1,180 @@
-Contribution: 2011-10-31 20:00
+# Laravel Hotel Booking Management System
+Laravel Hotel is an open-source web application built with laravel 8.0, enchanced with laravel websockets features to have realtime notification experience.
 
-Contribution: 2011-11-01 20:00
+Its now compatible with laravel 9
 
-Contribution: 2011-11-01 20:01
+## Instalation 
 
-Contribution: 2011-11-01 20:02
+### Init DB
+- Create DB Name: hotel_app
+or via terminal
+```
+mysql -u root -p
+```
+enter your db credential
+```
+create database hotel_app;
+exit;
+```
+### Init Commands:
+```
+cp .env.example .env // after that start filling credential at .env
 
-Contribution: 2011-11-03 20:00
+composer install
+npm install 
+npm run dev
+php artisan migrate:fresh --seed
+php artisan serv                => Terminal 1
+php artisan websockets:serv     => Terminal 2   //run the websocket server for realtime notification
+```
 
-Contribution: 2011-11-03 20:01
+### Development build
+```
+npm run dev
+```
 
-Contribution: 2011-11-03 20:02
 
-Contribution: 2011-11-03 20:03
 
-Contribution: 2011-11-04 20:00
+### Production Build
+```
+// run this on your terminal to generate production build
+npm run build
+```
 
-Contribution: 2011-11-04 20:01
+## TODO:
+- Customer's Room:
+    - Asks for room to be cleaned
+        - Update room status
+            - Auth id must be == room->customer->id 
+        - Send realtime notification to Admin
+    - Order meals
+        - Send realtime notification to Admin, and food
 
-Contribution: 2011-11-04 20:02
+- Room Facility:
+    - Create
+    - Read
+        - Pagination
+        - Search
+    - Update
+    - Delete
 
-Contribution: 2011-11-04 20:03
+- User Profile
+    - View
+    - User Activity Log
+        - View:
+            - Paginate
+            - see all
+    - User Settings
+        - Edit Profile
+        - Edit Password
 
-Contribution: 2011-11-04 20:04
+- Dashboard
+    - Guests Chart
+        - Get total customer / month
+    - Income Chart for Super only
+        - Get total income / month
 
-Contribution: 2011-11-14 20:00
+## Modul
+- Dashboard
+    - Guests Chart
+    - Guests on this day
 
-Contribution: 2011-11-14 20:01
+- Transaction
+    - Payment
+        - Create & Store Payment
+        - Payment History
+    - Room Reservation
+        - Step:
+            1. Choose Customer:
+                - Create New Customer / Pick from existing Customer
+            2. Input Form:
+                - How many people
+                - Date for Check In
+                - Date for Check Out
+            3. Pick Available Room:
+                - Check unoccupied room between date Check in and Check out.
+                - Room Capacity must be > than input how many people.
+            4. Confirmation & Down Payment
+                - Down Payment: 15% of total price
+                - Payment must be equal or higher than Down Payment
+            5. If the transaction Success:
+                - Send Email notification to Super Role about transaction payment.
+                - Send push notification to Super Role.
+                - Update all dashboard view
 
-Contribution: 2011-11-14 20:02
+- CUSTOMER Management
+    - Create Customer
+    - Read Customer
+        - Paginate
+        - Search
+    - Update Customer
+    - Delete Customer
+        - Cannot be deleted if the customer has transaction
+    - Customer Detail
 
-Contribution: 2011-11-14 20:03
+- USER Management
+    - Create User
+    - Read User (Super, Admin)
+        - Paginate
+        - Search
+    - Read User (Customer)
+        - Paginate
+        - Search
+    - Update User
+    - Delete User
+        - Cannot be deleted if the User has transaction
+    - User Detail
 
-Contribution: 2011-11-15 20:00
+- ROOM Management
+    - Create Room
+    - Read Room
+        - Paginate
+        - Search
+    - Update Room
+    - Delete Room
+        - Cannot be deleted if the Room already connected in transaction
+    - Room Detail
 
-Contribution: 2011-11-16 20:00
+- CRUD ROOM TYPE
+    - Create Room Type
+    - Read Room Type
+        - Paginate 
+        - Search
+    - Update Room Type
+    - Delete Room Type
 
-Contribution: 2011-11-16 20:01
+- CRUD ROOM STATUS
+    - Create Room Status
+    - Read Room Status
+        - Paginate
+        - Search
+    - Update Room Status
+    - Delete Room Status
 
-Contribution: 2011-11-21 20:00
 
-Contribution: 2011-11-21 20:01
 
-Contribution: 2011-11-23 20:00
 
-Contribution: 2011-11-24 20:00
 
-Contribution: 2011-11-24 20:01
+## ERD
+![alt text](https://github.com/workwithjohn/hotel-booking-system/blob/main/erd.PNG?raw=true)
 
-Contribution: 2011-11-24 20:02
+## Reservation Plot
 
-Contribution: 2011-11-24 20:03
+- Customer Register to Admin
+- Fill in customer's identity (based on KTP)
+    - Fill in by the Admin
+- Book a room (how much people? and when?)
+    - Fill in by the Admin based on customers order
+        - rooms are recommended by the system based on the input value.
+- Choose the room
+    - Fill in by the Admin based on customers order
+        - Choose based on room type, price, and facility.
+- Make a down payment
+    - Fill in by the Admin based on minimum down payment (15% of total price)
+- Stay
+- Finish (Check Out) and pay the insufficient payment
 
-Contribution: 2011-11-24 20:04
 
-Contribution: 2011-11-25 20:00
+## Laravel License
 
-Contribution: 2011-11-25 20:01
-
-Contribution: 2011-11-25 20:02
-
-Contribution: 2011-11-25 20:03
-
-Contribution: 2011-11-29 20:00
-
-Contribution: 2011-11-29 20:01
-
-Contribution: 2011-11-29 20:02
-
-Contribution: 2011-11-29 20:03
-
-Contribution: 2011-11-29 20:04
-
-Contribution: 2011-11-30 20:00
-
-Contribution: 2011-11-30 20:01
-
-Contribution: 2011-11-30 20:02
-
-Contribution: 2011-11-30 20:03
-
-Contribution: 2011-12-01 20:00
-
-Contribution: 2011-12-01 20:01
-
-Contribution: 2011-12-02 20:00
-
-Contribution: 2011-12-02 20:01
-
-Contribution: 2011-12-02 20:02
-
-Contribution: 2011-12-02 20:03
-
-Contribution: 2011-12-05 20:00
-
-Contribution: 2011-12-05 20:01
-
-Contribution: 2011-12-05 20:02
-
-Contribution: 2011-12-05 20:03
-
-Contribution: 2011-12-06 20:00
-
-Contribution: 2011-12-06 20:01
-
-Contribution: 2011-12-06 20:02
-
-Contribution: 2011-12-06 20:03
-
-Contribution: 2011-12-06 20:04
-
-Contribution: 2011-12-07 20:00
-
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
